@@ -81,6 +81,19 @@ export class App extends React.Component {
 
   onFilterChange = event => {
     this.setState({ filter: event.target.value });
+
+    const query = this.state.filter.toLocaleLowerCase();
+
+    const itemByQuery = this.state.contacts.find(contact =>
+      contact.name.toLocaleLowerCase().includes(query)
+    );
+
+    if (!itemByQuery) {
+      Notiflix.Notify.warning(
+        'No contacts matching your request',
+        notifySettings
+      );
+    }
   };
 
   filterContacts = () => {
@@ -90,12 +103,6 @@ export class App extends React.Component {
       contact.name.toLocaleLowerCase().includes(query)
     );
 
-    if (filteredContacts.length === 0) {
-      Notiflix.Notify.warning(
-        'No contacts matching your request',
-        notifySettings
-      );
-    }
     return filteredContacts;
   };
 
