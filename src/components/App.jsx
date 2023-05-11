@@ -27,6 +27,24 @@ export class App extends React.Component {
     filter: '',
   };
 
+  componentDidMount() {
+    const contactsFromStorage = JSON.parse(localStorage.getItem('contacts'));
+
+    if (contactsFromStorage) {
+      this.setState({ contacts: contactsFromStorage });
+
+      if (contactsFromStorage.length === 0) {
+        Notiflix.Notify.info('No contacts in your list yet', notifySettings);
+      }
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
+
   onAddBtnClick = FormData => {
     const { name, number } = FormData;
 
