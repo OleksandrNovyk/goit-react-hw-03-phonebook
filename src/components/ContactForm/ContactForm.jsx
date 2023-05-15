@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { MdPersonAddAlt1 } from 'react-icons/md';
+import { MdPersonAdd } from 'react-icons/md';
 import { Form, Label } from './ContactForm.styled';
 import { Btn } from '../Btn/Btn';
 import { InputItem } from './InputItem';
@@ -58,7 +58,7 @@ export class ContactForm extends Component {
         </Label>
         <Btn
           type="submit"
-          icon={MdPersonAddAlt1}
+          icon={MdPersonAdd}
           status="add"
           text="Add contact"
         />

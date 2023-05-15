@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types';
 import { DebounceInput } from 'react-debounce-input';
 import styled from 'styled-components';
-
 import { FilterWrapper } from './Filter.styled';
-
 import { Label } from '../ContactForm/ContactForm.styled';
 
 const FilterInput = styled(DebounceInput)`
